@@ -1,7 +1,7 @@
 body {
   font-family: Arial;
   margin: 0;
-  background-color: whitesmoke;
+  background-color: burlywood;
 }
 
 
@@ -9,6 +9,10 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+@media screen and (min-width: 800px) {
+  body {
+    background-color: whitesmoke;
+  }
 
 form.example input[type=text] {
   padding: 10px;
@@ -52,7 +56,7 @@ form.example::after {
 .header1 {
   padding: 15px;
   text-align: center;
-  background: #c72c81;
+  background: #c72b81;
   color: white;
   font-size: 20px;
 }
@@ -76,7 +80,7 @@ form.example::after {
 }
 
 p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  ;
   font-size: larger;
 }
 
@@ -92,6 +96,9 @@ p::selection {
 
 img {
   float: right;
+}
+p,h3{
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .button {
