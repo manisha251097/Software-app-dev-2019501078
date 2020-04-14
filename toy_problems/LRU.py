@@ -5,7 +5,7 @@ class LRU:
         self.size =0
         self.cache = {}
         self.lru = {}
-  def put(self,key,val):
+    def put(self, key, val):
         if(len(self.cache)==self.capacity):
             if(key not in self.cache):
                 old_key = min(self.lru.keys(), key=lambda k:self.lru[k])
@@ -40,4 +40,27 @@ class LRU:
             return self.lru[key]
         else:
             return None
-      
+lruobj = LRU(2)
+lruobj.put(2,"git")
+lruobj.put(3,"hub")
+lruobj.get(3)
+lruobj.put(55,"hmm")
+assert(lruobj.get(55))=="hmm"
+assert(lruobj.get(2))==None
+
+assert(lruobj.current_frequency(3))==1
+assert(lruobj.current_frequency(65)) == None
+assert(lruobj.get_singleelementfromcache(2))==None
+lruobj.get(3)
+lruobj.get(55)
+lruobj.get(3)
+lruobj.put(25,"sahhhh")
+assert(lruobj.get(55))==None
+assert(lruobj.current_frequency(55))==None
+assert(lruobj.current_frequency(25))==0
+lruobj.put(25,"ss")
+assert(lruobj.current_frequency(25))==0
+print("ALL TESTCASES PASSED")
+
+
+   
