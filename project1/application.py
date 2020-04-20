@@ -25,7 +25,7 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("register.html")
 
 @app.route("/register" , methods=["GET","post"])
 def register():
@@ -33,4 +33,4 @@ def register():
         return "PLEASE SUBMIT THE FORM"
     else:
         name = request.form.get("name")
-        return render_template("register.html", name=name)
+        return render_template("index.html", name=name)
