@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Tell Flask what SQLAlchemy databas to use.
 
-app.config["SQLALCHEMY_DATABASE_URI"] = 'postgres://vzntuvxhqpksbv:caf5aeb37d4471b25d9dbe66de5d8a4168daacee830458b9a73639e2f43e6eb4@ec2-54-210-128-153.compute-1.amazonaws.com:5432/dbo5a5cl9hl2qc'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'postgres://yezocqidotvbaj:63d37cde50bccb34c9b546fdb6d18342f78d71b9847a986fd3ba065b5e8ad59c@ec2-18-235-20-228.compute-1.amazonaws.com:5432/d2kgfpergha2b4'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Link the Flask app with the database (no Flask app is actually being run yet).

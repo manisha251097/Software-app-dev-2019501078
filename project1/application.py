@@ -30,7 +30,11 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    print(session.get('email'))
+    if session.get('email') is None:
+        return render_template("index.html")
+    return render_template("thanks.html")
+    
 
 @app.route("/" , methods=["GET","post"])
 def register():
@@ -40,7 +44,7 @@ def register():
         name = request.form.get("name")
         email=request.form.get("mail")
         password=request.form.get("passw")
-        u = user(name=name,email=email,password=password)
+        u = user(username=name,email=email,password=password)
         # session = Session()
         p = user.query.get(email)
         if p is None:
@@ -69,5 +73,10 @@ def thanks():
         if u.password != password:
             return render_template("login.html", message="invalid pass")
         else:
-            name=u.name
+            name=u.username
+            session['email'] = u.email
             return render_template("thanks.html",name=name)
+@app.route("/logout")
+def logout():
+    session.clear()
+    return render_template("login.html")

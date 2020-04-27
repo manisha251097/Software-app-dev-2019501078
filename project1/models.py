@@ -19,17 +19,24 @@ class user(db.Model):
 
     def __repr__(self):
         return self.password
+class Book(db.Model) :
+    
+    __tablename__="books"
 
+    isbn = db.Column(db.String, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    year = db.Column(db.String, nullable=False)
 
-class Book(db.Model):
-    __tablename__ = "books"
-    isbn = db.Column(db.String ,primary_key=True)
-    title = db.Column(db.String,unique=True,nullable=False)
-    author = db.Column(db.String,nullable=False)
-    year = db.Column(db.Integer,nullable=False)
-
-    def __init__(self, isbn, title,author,year):
+    def __init__(self, isbn, title, author, year) :
+        
         self.isbn = isbn
         self.title = title
-        self.author=author
-        self.year=year
+        self.author = author
+        self.year = year
+
+    def __repr__(self) :
+
+        return "ISBN : " + self.isbn + " | Title : " + self.title + " | Author : " + self.author + " | Year : " + self.year
+
+
