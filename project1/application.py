@@ -75,7 +75,35 @@ def thanks():
         else:
             name=u.username
             session['email'] = u.email
-            return render_template("thanks.html",name=name)
+            return render_template("thanks.html", name=name)
+@app.route("/search",methods=["GET","POST"])
+def search():
+    try:
+        inp = str(request.form.get("search"))
+        print("input is"+inp)
+        with open('books.csv', newline= "") as file:
+            readData = [row for row in csv.DictReader(file)]
+            for i in range(len(readData)):
+                if readData[i]['title'] == inp:
+                    return render_template("bookPage.html", isbn=readData[i]['isbn']
+                    )
+            return "Book not found"
+    except:
+        return sys.exc_info()[0]
+
+@app.route("/bookPage/<string:isbn>", methods=["GET", "POST"])
+def bookpage(isbn) :
+
+    if request.method == "GET" :
+        if session.get("email") :
+            return render_template("bookPage.html", isbn=isbn)
+        else :
+            redirect(url_for("login"))
+    else :
+        if session.get("email") :
+            return isbn
+        else :
+            redirect(url_for("login"))
 @app.route("/logout")
 def logout():
     session.clear()
