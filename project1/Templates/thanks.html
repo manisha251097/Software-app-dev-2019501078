@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>LOGIN PAGE</title>
@@ -13,20 +12,13 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <h1>Welcome! {{name}} You have successfuly logged in! </h1>
     <style>
-        body{
+body{
         background-color: #cce6ff;
     }
-    h1
-    {
-        margin: 20px;
-        text-align: center;
-        color: black;
-    }
-    form input , label{
-        color: black;
-    }
-    .registerbtn {
+        .registerbtn {
         background-color: #339cff;
         color: white;
         padding: 16px 20px;
@@ -38,33 +30,15 @@
         }
     </style>
     </head>
-    <body>
-        <h1>Login Form</h1>
+    
     <div class="container" >
         <div class="row" style="margin-top: 40px">
             <div class="col-sm-6">
-                <form action="{{url_for('thanks')}}" method="POST">
-                    <div class="form-group">
-                      <label for="email">Email : </label>
-                      <input type="email" required name="mail" class="form-control" id="mail">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Password : </label>
-                      <input type="password" required name="passw" class="form-control" id="passw">
-                    </div>
-                    {% if message == "invalid credentails" %}
-                        <h4 style="color:red" >Invalid credentails</h4>
-                    {% endif %}
-                    {% if message == "invalid pass" %}
-                        <h4 style="color:red" >Wrong Password.Try Again</h4>
-                    {% endif %}
-
-                     <br>
-
-                     <button type="submit" class="registerbtn">Login</button>
+                <form action="{{url_for('login')}}" method="POST">
+                    <button type="submit" class="registerbtn">Logout</button>
                 </form>
-            </div>
-        </div>
-    </div>
-    </body>
+                </div>
+                </div>
+                </div>
+
 </html>
