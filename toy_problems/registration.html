@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <title>Register | Flask</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style>
+    body{
+        background-color: #cce6ff;
+    }
+    h1
+    {
+        margin: 20px;
+        text-align: center;
+        color: black;
+        font-weight:bold;
+        
+    }
+    .success, .warning, .error {
+        font-family: sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        border: 1px solid black;
+        padding: 2px;
+        margin: 5px;
+    }
+    .success {
+    background-color: green;
+    }
+    .error
+    {
+        background-color: red;
+    }
+    form input , label{
+        color: black;
+    }
+    .registerbtn {
+        background-color: #339cff;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        font-size: larger;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+        }
+    .error{
+        font-size: x-large;
+    }
+    #pwdp,#emailp{
+    color:red;
+    
+</style>
+</header>
+<body>
+    <h1>REGISTRATION FORM</h1>
+    <div class="container" >
+        <div class="row" style="margin-top: 40px">
+            <div class="col-sm-6">
+            <form id="new-form" action="">
+                    <div class="form-group">
+                      <label for="email">Email : </label>
+                      <input type="email" required name="mail" class="form-control" id="mail">
+                      <p id="emailp"></p><br>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Password : </label>
+                      <input type="password" required name="passw" class="form-control" id="passw" minlength="6">
+                      <p id="pwdp"></p>
+                    </div>
+                   
+                    <br>
+
+                     <button type="submit" class="registerbtn">Register</button>
+            
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+<script>
+            document.addEventListener("DOMContentLoaded",function(){
+                document.querySelector('#new-form').onsubmit = function(){
+                    if(document.querySelector('#mail').value.length === 0){
+                        document.querySelector('#emailp').innerHTML="Cannot leave this field empty"
+                        return false
+                    }
+                    else{
+                        document.querySelector('#emailp').innerHTML=""
+                        email = document.querySelector("#mail").value
+                        const expression = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+                        var validate = expression.test(String(email).toLowerCase())
+                        if (validate === false){
+                            document.querySelector('#emailp').innerHTML="should be in the form of xx@yy.zz"
+                            return false
+                        }
+                        else{
+                            document.querySelector('#emailp').innerHTML=""
+                            if(document.querySelector('#pwd').value.length === 0){
+                                console.log("Ammababoi")
+                                document.querySelector('#pwdp').innerHTML="Cannot leave this field empty"
+                                return false
+                            }
+                            else{
+                                document.querySelector('#pwdp').innerHTML=""
+                                password = document.querySelector("#passw").value
+                                var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+                                val  = strongRegex.test(String(password))
+                                if (val === false){
+                                    document.querySelector('#pwdp').innerHTML="The passwrd should have atleast 1 uppercase,1 lowercase,1 digit and 1 spl char and length of password should be more than 6 "
+                                    return false
+                                }
+                                else{
+                                    document.querySelector('#pwdp').innerHTML=""
+                                    return true
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+    
+</html>
